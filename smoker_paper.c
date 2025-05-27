@@ -1,7 +1,4 @@
-/*
- *    Filename           : smoker_paper.c
- *    Function           : 模拟拥有纸的抽烟者 (需要烟草和胶水)
- */
+
 #include "ipc.h"
 
 
