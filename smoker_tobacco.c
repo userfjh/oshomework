@@ -4,7 +4,7 @@
  */
 #include "ipc.h"
 
-// 在ipc.h中已声明
+
 
 
 int main(int argc, char *argv[]) {
