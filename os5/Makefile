@@ -1,5 +1,5 @@
 d = vmrp.h
-srcs = vmrp.cpp
+srcs = vmrp.cc
 objs = vmrp.o
 opts = -w -g -c
 all: vmrp

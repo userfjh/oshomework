@@ -1,4 +1,4 @@
-nclude "vmrp.h"
+#include "vmrp.h"
 Replace::Replace() {
     int i;  // 设定总得访问页数,并分配相应的引用页号和淘汰页号记录数组空间
     cout << "Please input page numbers :";
