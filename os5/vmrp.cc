@@ -1,4 +1,5 @@
 #include "vmrp.h"
+
 Replace::Replace() {
     int i;  // 设定总得访问页数,并分配相应的引用页号和淘汰页号记录数组空间
     cout << "Please input page numbers :";
@@ -7,8 +8,9 @@ Replace::Replace() {
     EliminatePage = new int[sizeof(int) * PageNumber];
     // 输入引用页号序列(页面走向), 初始化引用页数组cout
     cout << "Please input reference page string :";
-    for (i = 0; i < PageNumber; i++)
-        cin >> ReferencePage[i];  // 引用页暂存引用数组
+   for (i = 0; i < PageNumber; i++)
+    cin >> ReferencePage[i];
+        // 引用页暂存引用数组
     // 设定内存实页数(帧数),并分配相应的实页号记录数组空间(页号栈)
     cout << "Please input page frames :";
     cin >> FrameNumber;
@@ -323,27 +325,6 @@ void Replace::Mfu(void) {
         }
 
         if (!found) {
-            FaultNumber++;
-            // 找到使用频率最高的页面进行替换
-            int maxFreqIndex = 0;
-            for (int i = 1; i < FrameNumber; i++) {
-                if (frequency[i] > frequency[maxFreqIndex]) {
-                    maxFreqIndex = i;
-                }
-            }
-
-            // 记录被淘汰的页面
-            if (PageFrames[maxFreqIndex] != -1) {
-                EliminatePage[eliminateIndex++] = PageFrames[maxFreqIndex];
-            }
-
-            // 进行页面替换
-            PageFrames[maxFreqIndex] = next;
-            frequency[maxFreqIndex] = 1;  // 新页面初始使用频率为1
-        }
-
-        // 报告当前实存中页号
-f (!found) {
     FaultNumber++;
     int targetFrameIndex = -1; // 目标页框索引
 
@@ -375,7 +356,10 @@ f (!found) {
     // 进行页面替换/填充
     PageFrames[targetFrameIndex] = next;
     frequency[targetFrameIndex] = 1;  // 新页面或刚调入页面的初始使用频率为1
-}        for (int j = 0; j < FrameNumber; j++) {
+}
+
+        // 报告当前实存中页号
+        for (int j = 0; j < FrameNumber; j++) {
             if (PageFrames[j] >= 0)
                 cout << PageFrames[j] << " ";
         }
@@ -398,5 +382,7 @@ int main(int argc, char* argv[]) {
     vmpr->Eclock();
     vmpr->Lfu();
     vmpr->Mfu();
+
+    
     return 0;
-}:
+}
