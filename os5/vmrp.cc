@@ -343,7 +343,39 @@ void Replace::Mfu(void) {
         }
 
         // 报告当前实存中页号
-        for (int j = 0; j < FrameNumber; j++) {
+f (!found) {
+    FaultNumber++;
+    int targetFrameIndex = -1; // 目标页框索引
+
+    // 1. 检查是否有空闲页框
+    for (int i = 0; i < FrameNumber; i++) {
+        if (PageFrames[i] == -1) { // 假设-1代表空页框
+            targetFrameIndex = i;
+            break;
+        }
+    }
+
+    if (targetFrameIndex != -1) { // 2. 如果有空闲页框，直接使用
+        // 不需要记录淘汰页，因为是填入空框
+    } else { // 3. 如果所有页框都满了，执行MFU替换逻辑
+        int maxFreqIndex = 0;
+        for (int i = 1; i < FrameNumber; i++) {
+            if (frequency[i] > frequency[maxFreqIndex]) {
+                maxFreqIndex = i;
+            }
+        }
+        targetFrameIndex = maxFreqIndex;
+
+        // 记录被淘汰的页面
+        if (PageFrames[targetFrameIndex] != -1) { // 确保确实有页面被淘汰
+            EliminatePage[eliminateIndex++] = PageFrames[targetFrameIndex];
+        }
+    }
+
+    // 进行页面替换/填充
+    PageFrames[targetFrameIndex] = next;
+    frequency[targetFrameIndex] = 1;  // 新页面或刚调入页面的初始使用频率为1
+}        for (int j = 0; j < FrameNumber; j++) {
             if (PageFrames[j] >= 0)
                 cout << PageFrames[j] << " ";
         }
@@ -367,4 +399,4 @@ int main(int argc, char* argv[]) {
     vmpr->Lfu();
     vmpr->Mfu();
     return 0;
-}
+}:
