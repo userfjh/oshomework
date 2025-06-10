@@ -21,6 +21,7 @@ DiskArm::DiskArm() {
     cout << "Please input Request cylinder string :";
     Request = new int[sizeof(int) * RequestNumber];
     Cylinder = new int[sizeof(int) * RequestNumber];
+    
     srand(static_cast<unsigned>(time(0)));
     for (int i = 0; i < RequestNumber; i++) {
         Request[i] = rand() % 200;  // 假设磁道号范围为0-199
@@ -28,6 +29,10 @@ DiskArm::DiskArm() {
     for (int j = 0; j < RequestNumber; j++) {
         cout << Request[j] << " ";
     }
+    /*for(int i=;i<RequestNumber;i++)
+    {
+    	cin>>Request[i];
+    }*/
     cout << endl;
 }
 DiskArm::~DiskArm() {}
