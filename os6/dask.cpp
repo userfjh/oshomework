@@ -29,10 +29,6 @@ DiskArm::DiskArm() {
     for (int j = 0; j < RequestNumber; j++) {
         cout << Request[j] << " ";
     }
-    /*for(int i=;i<RequestNumber;i++)
-    {
-    	cin>>Request[i];
-    }*/
     cout << endl;
 }
 DiskArm::~DiskArm() {}
